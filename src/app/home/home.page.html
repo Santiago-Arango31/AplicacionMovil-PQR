@@ -1,20 +1,48 @@
-<ion-header [translucent]="true">
+<ion-header collapse="condense" [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title color="secondary">PQR's</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card-header>
+    <ion-card-subtitle>Usuario,</ion-card-subtitle>
+    <ion-card-title>¡ Bienvenido!</ion-card-title>
+  </ion-card-header>
 
-  <div id="container">
+  <div class="icon-home">
+    <ion-icon style="font-size:35vw ; width: 95%;" color="primary" name="construct-outline"></ion-icon>
+  </div>
+
+ 
+  
+  <div class="registros">
+    <ion-card type="buttom">
+      <ion-card-header>
+        <ion-card-subtitle>Registra una solicitud de:</ion-card-subtitle>
+        <ion-card-title>Petición o Queja</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  
+    <ion-card type="buttom">
+      <ion-card-header>
+        <ion-card-subtitle>Registra una solicitud de:</ion-card-subtitle>
+        <ion-card-title>Reclamo</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </div>
+ 
+
+  <ion-card type="buttom">
+    <ion-card-header>
+      <ion-card-subtitle>Conoce el estado de tus</ion-card-subtitle>
+      <ion-card-title>Radicados</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <!-- <div id="container">
     <strong>Ready to . create an app?</strong>
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  </div> -->
+
 </ion-content>
