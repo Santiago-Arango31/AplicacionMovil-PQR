@@ -1,44 +1,79 @@
-<ion-header collapse="condense" [translucent]="true">
+
+<ion-header collapse="condense">
   <ion-toolbar>
+    <ion-buttons *ngIf="usuario !== null" slot="start" (click)="seleccionarUsuario(null)">
+      <ion-icon style="font-size:8vw ;" color="primary" name="arrow-back-outline"></ion-icon>
+    </ion-buttons>
     <ion-title color="secondary">PQR's</ion-title>
   </ion-toolbar>
 </ion-header>
 
+
+
 <ion-content [fullscreen]="true">
-  <ion-card-header>
-    <ion-card-subtitle>Usuario,</ion-card-subtitle>
-    <ion-card-title>¡ Bienvenido!</ion-card-title>
-  </ion-card-header>
 
   <div class="icon-home">
     <ion-icon style="font-size:35vw ; width: 95%;" color="primary" name="construct-outline"></ion-icon>
   </div>
 
- 
-  
-  <div class="registros">
-    <ion-card type="buttom">
-      <ion-card-header>
-        <ion-card-subtitle>Registra una solicitud de:</ion-card-subtitle>
-        <ion-card-title>Petición o Queja</ion-card-title>
-      </ion-card-header>
-    </ion-card>
-  
-    <ion-card type="buttom">
-      <ion-card-header>
-        <ion-card-subtitle>Registra una solicitud de:</ion-card-subtitle>
-        <ion-card-title>Reclamo</ion-card-title>
-      </ion-card-header>
-    </ion-card>
-  </div>
- 
+  <div *ngIf="usuario === null">
+    <div>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>Selecciona un:</ion-card-subtitle>
+          <ion-card-title>usuario para continuar: </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list lines="none">
+            <ion-item *ngFor="let auxUsuario of usuarios" (click)="seleccionarUsuario(auxUsuario)">
+              <ion-avatar slot="start">
+                <ion-icon style="font-size:8vw ;" color="tertiary" name="person-outline"></ion-icon>
+              </ion-avatar>
+              <ion-label>
+                <h2>{{ auxUsuario.nombre }} {{ auxUsuario.apellido }}</h2>
+                <h3>{{ auxUsuario.correo }}</h3>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </div>
 
-  <ion-card type="buttom">
+
+  </div>
+  <div *ngIf="usuario !== null">
     <ion-card-header>
-      <ion-card-subtitle>Conoce el estado de tus</ion-card-subtitle>
-      <ion-card-title>Radicados</ion-card-title>
+      <ion-card-subtitle>Usuario, {{ usuario.nombre }} {{ usuario.apellido }}</ion-card-subtitle>
+      <ion-card-title>¡ Bienvenido!</ion-card-title>
     </ion-card-header>
-  </ion-card>
+    <div class="registros">
+      <ion-card type="buttom" (click)="ver('nuevoRadicado')">
+        <ion-card-header>
+          <ion-card-subtitle>Registra una solicitud de:</ion-card-subtitle>
+          <ion-card-title>Petición o Queja</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+
+      <ion-card type="buttom" (click)="ver('nuevoReclamos')">
+        <ion-card-header>
+          <ion-card-subtitle>Registra una solicitud de:</ion-card-subtitle>
+          <ion-card-title>Reclamo</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </div>
+
+
+    <ion-card type="buttom" (click)="ver('radicados')">
+      <ion-card-header>
+        <ion-card-subtitle>Conoce el estado de tus</ion-card-subtitle>
+        <ion-card-title>Radicados</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+
+  </div>
+
+
+
 
   <!-- <div id="container">
     <strong>Ready to . create an app?</strong>

@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { RespuestasPageRoutingModule } from './respuestas-routing.module';
+import { NuevoRadicadoPageRoutingModule } from './nuevo-radicado-routing.module';
 
-import { RespuestasPage } from './respuestas.page';
+import { NuevoRadicadoPage } from './nuevo-radicado.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RespuestasPageRoutingModule
+    NuevoRadicadoPageRoutingModule
   ],
-  declarations: [RespuestasPage]
+  declarations: [NuevoRadicadoPage]
 })
-export class RespuestasPageModule {}
+export class NuevoRadicadoPageModule {}

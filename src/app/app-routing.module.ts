@@ -20,8 +20,8 @@ const routes: Routes = [
     loadChildren: () => import('./entities/reclamos/reclamos.module').then( m => m.ReclamosPageModule)
   },
   {
-    path: 'respuestas',
-    loadChildren: () => import('./entities/respuestas/respuestas.module').then( m => m.RespuestasPageModule)
+    path: 'nuevo-radicado',
+    loadChildren: () => import('./entities/nuevo-radicado/nuevo-radicado.module').then( m => m.NuevoRadicadoPageModule)
   },
 ];
 

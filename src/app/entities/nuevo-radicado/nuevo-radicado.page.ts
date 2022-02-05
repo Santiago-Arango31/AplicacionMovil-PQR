@@ -3,11 +3,11 @@ import { ModalController } from '@ionic/angular';
 import { User } from 'src/app/models/user.model';
 
 @Component({
-  selector: 'app-reclamos',
-  templateUrl: './reclamos.page.html',
-  styleUrls: ['./reclamos.page.scss'],
+  selector: 'app-nuevo-radicado',
+  templateUrl: './nuevo-radicado.page.html',
+  styleUrls: ['./nuevo-radicado.page.scss'],
 })
-export class ReclamosPage implements OnInit {
+export class NuevoRadicadoPage implements OnInit {
   @Input() usuario : User
   
   constructor(

@@ -11,22 +11,13 @@ export class RadicadosService {
   
   constructor(protected http: HttpClient) {}
 
-  // create(sueno: Sueno): Observable<HttpResponse<Sueno>> {
-  //   return this.http.post<Sueno>(this.resourceUrl, sueno, { observe: 'response' });
-  // }
-
-  // update(sueno: Sueno): Observable<HttpResponse<Sueno>> {
-  //   return this.http.put(this.resourceUrl, sueno, { observe: 'response' });
-  // }
-
-  find(): Observable<Radicado[]> {
-    return this.http.get<Radicado[]>(this.resourceUrl);
+  findAll(): Observable<HttpResponse<Radicado[]>> {
+    return this.http.get<Radicado[]>(this.resourceUrl, { observe: 'response' });
   }
 
-  
-  // delete(id: number): Observable<HttpResponse<any>> {
-  //   return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response' });
-  // }
+  findByUserId( userId: Number): Observable<HttpResponse<Radicado[]>> {
+    return this.http.get<Radicado[]>(`${this.resourceUrl}/${userId}`, { observe: 'response' });
+  }
 
 }
 

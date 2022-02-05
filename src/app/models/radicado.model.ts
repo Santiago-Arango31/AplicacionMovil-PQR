@@ -1,10 +1,10 @@
 export class Radicado {
     constructor(
-        public idRadicado?: number,
-        public idUsuario?: number,
+        public id_radicado?: number,
+        public id_usuario?: number,
         public tipo?: string,
-        public fechaCreacion?: any,
-        public fechaModicacion?: any,
-        public contenido?: any
+        public fecha_creacion?: any,
+        public fecha_modicacion?: any,
+        public contenido?: string
     ) { }
 }
