@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { RadicadosService } from '../service/radicados/radicados.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +9,21 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(
+    private radicadosService : RadicadosService,
+    protected http: HttpClient
+  ) {}
+
+  ngOnInit(){
+    console.log('hola mundo')
+    this.radicadosService.find().subscribe(
+      success => {
+        console.log('success', success)
+      }, error => {
+        console.error(error)
+      }
+
+    )
+  }
 
 }
