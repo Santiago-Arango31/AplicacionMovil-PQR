@@ -123,7 +123,11 @@ export class ReclamosPage implements OnInit {
         if (success.status == 201) {
           this.mensajesError(' Registro realizado exitosamente ')
           setTimeout(() => {
-            this.cerrarModal()
+            this.reclamo = null
+            this.respuestaAdministrativa = null
+            this.displayForm = false
+            this.auxReclamo = ''
+            this.ngOnInit()
           }, 3000);
         } else {
           this.mensajesError(' No se ha generado el registro exitosamente, intenta nuevamente')
