@@ -35,8 +35,6 @@ export class ReclamosPage implements OnInit {
    }
 
   ngOnInit() {
-    console.log('this.usuario',this.usuario)
-    console.log('this.radicados',this.radicado)  
     this.consultarRespuestaAdministrativa()
     this.consultarReclamo()
   }
@@ -62,6 +60,7 @@ export class ReclamosPage implements OnInit {
       success => {
         if (success.status == 200) {
           this.reclamo = success.body
+          console.log(this.reclamo)
         } else {
           this.reclamo = null
           this.mensajesError(' No se han encontrado usuarios, algunas funciones se veran limitadas. Intenta nuevamente')
@@ -75,25 +74,30 @@ export class ReclamosPage implements OnInit {
 
 
   async crearReclamo(){
-    if (this.respuestaAdministrativa === null && this.reclamo == null){
-      this.displayForm = true
+    let auxFechaRadicado = new Date(new Date(this.radicado.fecha_creacion).setDate(new Date(this.radicado.fecha_creacion).getDate() + 5))
+    if (auxFechaRadicado.getDate() <= new Date().getDate()) {
+      if (this.respuestaAdministrativa === null){
+        this.displayForm = true
+      } else {
+        const alert = await this.alertController.create({
+          mode: 'ios',
+          header: 'Alerta',
+          message: 'Si no esta deacuerdo con la respuesta administrativa, presione continuar',
+          buttons: [{
+            text: 'Cancelar',
+            role: 'cancel',
+          }, {
+            text: 'Continuar',
+            handler: () => {
+              this.displayForm = true
+            }
+          }]
+    
+        });
+        await alert.present();
+      }
     } else {
-      const alert = await this.alertController.create({
-        mode: 'ios',
-        header: 'Alerta',
-        message: 'Si no esta deacuerdo con la respuesta administrativa, presione continuar',
-        buttons: [{
-          text: 'Cancelar',
-          role: 'cancel',
-        }, {
-          text: 'Continuar',
-          handler: () => {
-            this.displayForm = true
-          }
-        }]
-  
-      });
-      await alert.present();
+      this.mensajesError('El radicado se creo hace menos de 5 días, aún no se puede generar un relamo')
     }
   }
 

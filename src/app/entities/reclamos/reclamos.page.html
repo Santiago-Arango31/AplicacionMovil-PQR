@@ -59,9 +59,8 @@
         </ion-avatar>
         <ion-label>
           <h2>Reclamo </h2>
-          <p> número de radicado :{{ radicado?.id_radicado}}</p>
-          <p>{{ reclamo?.reclamo }}</p>
-          <p>{{ reclamo?.fecha_creacion | date : 'longDate'}}</p>
+          <p>{{ reclamo[0].reclamo }}</p>
+          <p>{{ reclamo[0].fecha_creacion | date : 'longDate'}}</p>
         </ion-label>
       </ion-item>
 
@@ -71,7 +70,6 @@
         </ion-avatar>
         <ion-label>
           <h2>No se ha realizado un <br> reclamo a esta peticion </h2>
-          <p> número de radicado :{{ radicado?.id_radicado}}</p>
         </ion-label>
       </ion-item>
     </ion-list>
@@ -83,11 +81,8 @@
   <div class="form" *ngIf="displayForm">
     <ion-list>
       <ion-item>
-        <ion-label position="floating">Tipo de solicitud</ion-label>
-        <ion-select [(ngModel)]="auxReclamo">
-          <ion-select-option value="Peticion">Petición</ion-select-option>
-          <ion-select-option value="Queja">Queja</ion-select-option>
-        </ion-select>
+        <ion-label position="floating">Detalle del reclamo</ion-label>
+        <ion-input type="text"  [(ngModel)]="auxReclamo"></ion-input>
       </ion-item>
     </ion-list>
     <br>
