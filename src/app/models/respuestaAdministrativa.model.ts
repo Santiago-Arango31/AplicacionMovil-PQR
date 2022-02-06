@@ -3,6 +3,6 @@ export class RespuestaAdm  {
       public idRespuesta?: number,
       public idRadicado?: number,
       public respuesta?: number,
-      public fechaCreacion?: any,
+      public fecha_creacion?: any,
     ) {}
   }

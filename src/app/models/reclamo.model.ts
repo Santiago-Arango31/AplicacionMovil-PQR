@@ -1,9 +1,9 @@
 export class Reclamo  {
     constructor(
-      public idReclamo?: number,
-      public idRadicado?: number,
-      public reclamo?: number,
-      public fechaCreacion?: any,
+      public id_reclamo?: number,
+      public id_radicado?: number,
+      public reclamo?: string,
+      public fecha_creacion?: any,
     ) {}
   }
   

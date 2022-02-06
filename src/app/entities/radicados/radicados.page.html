@@ -13,21 +13,30 @@
     <ion-card-title> Radicados </ion-card-title>
   </ion-card-header>
   <ion-card-content >
-    <ion-list *ngIf="radicados !== null && radicados.length" >
-      <ion-item *ngFor="let radicado of radicados">
-        <ion-avatar slot="start">
-          <ion-icon style="font-size:8vw ;" color="tertiary" name="bookmark-outline"></ion-icon>
-        </ion-avatar>
-        <ion-label>
-          <h2>{{ radicado?.tipo }} </h2>
-          <p> número de radicado :{{ radicado?.id_radicado}}</p>
-          <p>{{ radicado?.contenido }}</p>
-          <p>{{ radicado?.fecha_creacion | date : 'medium'}}</p>
-        </ion-label>
-      </ion-item>
+    <ion-list lines="none" *ngIf="radicados !== null && radicados.length" >
+     
+
+
+      <ion-item-sliding  *ngFor="let radicado of radicados.reverse()">
+        <ion-item>
+          <ion-avatar slot="start">
+            <ion-icon style="font-size:8vw ;" color="tertiary" name="bookmark-outline"></ion-icon>
+          </ion-avatar>
+          <ion-label>
+            <h2>{{ radicado?.tipo }} </h2>
+            <p> número de radicado :{{ radicado?.id_radicado}}</p>
+            <p>{{ radicado?.contenido }}</p>
+            <p>{{ radicado?.fecha_creacion | date : 'longDate'}}</p>
+          </ion-label>
+        </ion-item>
+
+        <ion-item-options side="end">
+          <ion-item-option color="primary" (click)="generarReclamo(radicado)"> generar reclamo</ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
     </ion-list>
 
-    <ion-item  *ngIf="radicados !== null && !radicados.length">
+    <ion-item lines="none" *ngIf="radicados !== null && !radicados.length">
       <ion-avatar slot="start">
         <ion-icon style="font-size:8vw ;" color="tertiary" name="bookmark-outline"></ion-icon>
       </ion-avatar>
@@ -35,7 +44,7 @@
         <h2> {{radicados.contenido}} </h2>
         <p> número de radicado :{{ radicados.id_radicado}}</p>
         <p>{{ radicados.contenido }}</p>
-        <p>{{ radicados.fecha_creacion | date : 'medium'}}</p>
+        <p>{{ radicados.fecha_creacion | date : 'longDate'}}</p>
       </ion-label>
     </ion-item>
   

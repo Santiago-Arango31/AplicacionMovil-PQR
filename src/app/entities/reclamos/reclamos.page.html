@@ -1,12 +1,101 @@
 <ion-header collapse="condense">
   <ion-toolbar>
     <ion-buttons slot="end" (click)="cerrarModal()">
-      <ion-icon style="font-size:8vw ;" color="primary" name="close-outline"></ion-icon>
+      <ion-icon style="font-size:8vw ;" color="secondary" name="close-outline"></ion-icon>
     </ion-buttons>
     <ion-title color="secondary">PQR's</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-card-header>
+    <ion-card-subtitle>{{ usuario.nombre }} {{ usuario.apellido }}</ion-card-subtitle>
+    <ion-card-title> Reclamos </ion-card-title>
+  </ion-card-header>
+
+  <ion-item lines="none">
+    <ion-avatar slot="start">
+      <ion-icon style="font-size:8vw ;" color="secondary" name="bookmark-outline"></ion-icon>
+    </ion-avatar>
+    <ion-label>
+      <h2>{{ radicado?.tipo }} </h2>
+      <p> número de radicado :{{ radicado?.id_radicado}}</p>
+      <p>{{ radicado?.contenido }}</p>
+      <p>{{ radicado?.fecha_creacion | date : 'longDate'}}</p>
+    </ion-label>
+  </ion-item>
+
+  <div *ngIf="!displayForm">
+
+    <ion-list lines="none">
+      <ion-item *ngIf="respuestaAdministrativa !== null">
+        <ion-avatar slot="start">
+          <ion-icon style="font-size:8vw ;" color="secondary" name="clipboard-outline"></ion-icon>
+        </ion-avatar>
+        <ion-label>
+          <h2>Respuesta Administrativa </h2>
+          <p>{{ respuestaAdministrativa?.respuesta }}</p>
+          <p>{{ respuestaAdministrativa?.fecha_creacion | date : 'longDate'}}</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item *ngIf="respuestaAdministrativa === null">
+        <ion-avatar slot="start">
+          <ion-icon style="font-size:8vw ;" color="secondary" name="clipboard-outline"></ion-icon>
+        </ion-avatar>
+        <ion-label>
+          <h2>Aún no cuenta con una <br> respuesta Administrativa </h2>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <br>
+
+
+    <ion-list lines="none">
+      <ion-item *ngIf="reclamo !== null">
+        <ion-avatar slot="start">
+          <ion-icon style="font-size:8vw ;" color="secondary" name="create-outline"></ion-icon>
+        </ion-avatar>
+        <ion-label>
+          <h2>Reclamo </h2>
+          <p> número de radicado :{{ radicado?.id_radicado}}</p>
+          <p>{{ reclamo?.reclamo }}</p>
+          <p>{{ reclamo?.fecha_creacion | date : 'longDate'}}</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item *ngIf="reclamo === null">
+        <ion-avatar slot="start">
+          <ion-icon style="font-size:8vw ;" color="secondary" name="create-outline"></ion-icon>
+        </ion-avatar>
+        <ion-label>
+          <h2>No se ha realizado un <br> reclamo a esta peticion </h2>
+          <p> número de radicado :{{ radicado?.id_radicado}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-button *ngIf="reclamo === null" color="secondary" (click)="crearReclamo()"> nuevo reclamo </ion-button>
+  </div>
+
+
+  <div class="form" *ngIf="displayForm">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Tipo de solicitud</ion-label>
+        <ion-select [(ngModel)]="auxReclamo">
+          <ion-select-option value="Peticion">Petición</ion-select-option>
+          <ion-select-option value="Queja">Queja</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <br>
+    <ion-button color="primary" (click)="save()"> Guardar </ion-button>
+  </div>
+
+
+
+
 
 </ion-content>

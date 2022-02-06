@@ -4,7 +4,6 @@ import { NuevoRadicadoPage } from '../entities/nuevo-radicado/nuevo-radicado.pag
 import { RadicadosPage } from '../entities/radicados/radicados.page';
 import { ReclamosPage } from '../entities/reclamos/reclamos.page';
 import { User } from '../models/user.model';
-import { RadicadosService } from '../service/radicados/radicados.service';
 import { UsuariosService } from '../service/usuarios/usuarios.service';
 
 @Component({
@@ -18,7 +17,6 @@ export class HomePage {
 
   constructor(
     public toastController: ToastController,
-    private radicadosService: RadicadosService,
     private usuariosService: UsuariosService,
     private modalController: ModalController
 
@@ -66,10 +64,6 @@ export class HomePage {
     }
   }
 
-  verRadicados(): void {
-    console.log('verRadicados')
-  }
-
 
   async presentarModal(component) {
     const modal = await this.modalController.create({
@@ -81,11 +75,8 @@ export class HomePage {
       }
     });
     modal.onDidDismiss().then(() => {
-      console.log('dismiss Modal')
     })
     return await modal.present();
-
-   
   }
 
   async mensajesError(message: string) {

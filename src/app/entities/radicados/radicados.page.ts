@@ -3,6 +3,7 @@ import { ModalController, ToastController } from '@ionic/angular';
 import { Radicado } from 'src/app/models/radicado.model';
 import { User } from 'src/app/models/user.model';
 import { RadicadosService } from 'src/app/service/radicados/radicados.service';
+import { ReclamosPage } from '../reclamos/reclamos.page';
 
 @Component({
   selector: 'app-radicados',
@@ -23,7 +24,6 @@ export class RadicadosPage implements OnInit {
    }
 
   ngOnInit() {
-    console.log('usuario',this.usuario)
     this.consultarRadicados()
   }
 
@@ -41,6 +41,23 @@ export class RadicadosPage implements OnInit {
         this.mensajesError('No se han encontrado resultados que coincidan con la busqueda')
       }
     )
+  }
+
+
+  async generarReclamo(radicado){
+    const modal = await this.modalController.create({
+      component: ReclamosPage,
+      swipeToClose: true,
+      mode: 'ios',
+      componentProps: {
+        'usuario': this.usuario,
+        'radicado': radicado
+      }
+    });
+    modal.onDidDismiss().then(() => {
+      console.log('dismiss Modal')
+    })
+    return await modal.present();
   }
 
   async mensajesError(message: string) {
