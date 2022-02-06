@@ -4,7 +4,7 @@ export class Radicado {
         public id_usuario?: number,
         public tipo?: string,
         public fecha_creacion?: any,
-        public fecha_modicacion?: any,
+        public fecha_modificacion?: any,
         public contenido?: string
     ) { }
 }

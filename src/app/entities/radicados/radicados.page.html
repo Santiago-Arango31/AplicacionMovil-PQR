@@ -2,9 +2,9 @@
 <ion-header collapse="condense">
   <ion-toolbar>
     <ion-buttons slot="end" (click)="cerrarModal()">
-      <ion-icon style="font-size:8vw ;" color="primary" name="close-outline"></ion-icon>
+      <ion-icon style="font-size:8vw ;" color="tertiary" name="close-outline"></ion-icon>
     </ion-buttons>
-    <ion-title color="secondary">PQR's</ion-title>
+    <ion-title color="tertiary">PQR's</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -16,7 +16,7 @@
     <ion-list *ngIf="radicados !== null && radicados.length" >
       <ion-item *ngFor="let radicado of radicados">
         <ion-avatar slot="start">
-          <ion-icon style="font-size:8vw ;" color="tertiary" name="person-outline"></ion-icon>
+          <ion-icon style="font-size:8vw ;" color="tertiary" name="bookmark-outline"></ion-icon>
         </ion-avatar>
         <ion-label>
           <h2>{{ radicado?.tipo }} </h2>
@@ -29,7 +29,7 @@
 
     <ion-item  *ngIf="radicados !== null && !radicados.length">
       <ion-avatar slot="start">
-        <ion-icon style="font-size:8vw ;" color="tertiary" name="person-outline"></ion-icon>
+        <ion-icon style="font-size:8vw ;" color="tertiary" name="bookmark-outline"></ion-icon>
       </ion-avatar>
       <ion-label>
         <h2> {{radicados.contenido}} </h2>

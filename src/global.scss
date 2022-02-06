@@ -24,4 +24,8 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+#ion-overlay-2 > div.alert-wrapper.ion-overlay-wrapper.sc-ion-alert-ios {
+    background-color: black;
+}
   

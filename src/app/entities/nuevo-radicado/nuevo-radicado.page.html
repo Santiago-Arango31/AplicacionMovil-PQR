@@ -3,10 +3,35 @@
     <ion-buttons slot="end" (click)="cerrarModal()">
       <ion-icon style="font-size:8vw ;" color="primary" name="close-outline"></ion-icon>
     </ion-buttons>
-    <ion-title color="secondary">PQR's</ion-title>
+    <ion-title color="primary">PQR's</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card-header>
+    <ion-card-subtitle>{{ usuario.nombre }} {{ usuario.apellido }}</ion-card-subtitle>
+    <ion-card-title> Crear nuevo radicado </ion-card-title>
+  </ion-card-header>
+
+  <div class="form">
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Tipo de solicitud</ion-label>
+        <ion-select [(ngModel)]="tipo">
+          <ion-select-option value="Peticion">Petición</ion-select-option>
+        <ion-select-option value="Queja">Queja</ion-select-option>
+        </ion-select>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label position="floating">Detalle de su petición: </ion-label>
+        <ion-input type="text"  [(ngModel)]="contenido"></ion-input>
+      </ion-item>
+    </ion-list>
+    <br>
+    <ion-button color="primary" (click)="save()"> Guardar </ion-button>
+  </div>
+ 
+
 
 </ion-content>
